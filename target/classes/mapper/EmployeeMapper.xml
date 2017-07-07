@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="mapper.EmployeeMapper">
+	<select id="selectEmployeeByIdLike" resultType="domain.Employee">
+		<!-- select * from tb_employee where state ='active' -->
+		<!-- <if test="loginname!=null and password!=null">
+			and loginname = #{loginname} or password= #{password}
+		</if> -->
+		select * from tb_employee
+		<where>
+			<if test="state!=null">
+				state = #{state}
+			</if>
+			<if test="id!= null">
+				and id = #{id}
+			</if>
+			<if test="loginname!=null and password!=null">
+				and loginname = #{loginname} and password= #{password}
+			</if>
+		</where>
+		
+		<!-- <choose>
+			<when test="id!=null">
+				and id = #{id}
+			</when>
+			<when test="loginname!=null and password!=null">
+				and loginname = #{loginname} and password= #{password}
+			</when>
+			<otherwise>
+				and sex = 'M'
+			</otherwise>
+		</choose> -->
+	</select>
+
+</mapper>

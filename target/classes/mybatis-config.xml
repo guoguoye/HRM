@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-config.dtd"> 
+
+<!-- mybatis 的核心配置 -->
+<configuration>
+	<!-- 指定日志设置 -->
+	<settings>
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
+	
+	<environments default="mysql">
+		<environment id="mysql">
+			<!-- 指定事务管理类型 -->
+			<transactionManager type="JDBC"></transactionManager>
+			<!-- 指定数据源 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis"/>
+				<property name="username" value="root"/>
+				<property name="password" value="123456"/>
+			</dataSource>
+			
+		</environment>
+	</environments>
+	
+	<!-- 持久化类的映射文件 地址-->
+	<mappers>
+		<mapper resource="mapper/EmployeeMapper.xml"/>
+		
+	</mappers>
+	
+</configuration>
